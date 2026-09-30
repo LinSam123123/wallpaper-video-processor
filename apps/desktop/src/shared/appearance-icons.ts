@@ -1,0 +1,61 @@
+export const SEMANTIC_ICON_NAMES = [
+  "appLogo",
+  "emptyState",
+  "warning",
+  "success",
+  "info",
+  "confirm",
+  "close",
+  "settings",
+  "tools",
+  "themeLight",
+  "themeDark",
+  "themeSystem",
+  "palette",
+  "typography",
+  "editorial",
+  "importResource",
+  "download",
+  "externalLink",
+  "delete",
+  "reset",
+  "copy",
+  "logs",
+  "more",
+  "chevronDown",
+  "sourceVideo",
+  "processedVideo",
+  "diagnostic",
+  "display",
+  "openFolder",
+  "workDirectory",
+  "saveOutput",
+  "upload",
+  "play",
+  "stop",
+  "loading",
+  "clock",
+  "blurBackground",
+  "crop",
+  "contain",
+  "cpu",
+  "performance",
+  "database",
+  "cachedFile",
+] as const;
+
+export type SemanticIconName = typeof SEMANTIC_ICON_NAMES[number];
+
+export const SEMANTIC_ICON_LABELS: Record<SemanticIconName, string> = {
+  appLogo: "应用标志", emptyState: "空状态", warning: "警告", success: "成功", info: "信息", confirm: "确认", close: "关闭",
+  settings: "设置", tools: "处理工具", themeLight: "浅色主题", themeDark: "深色主题", themeSystem: "跟随系统", palette: "强调色",
+  typography: "排版", editorial: "编辑排版", importResource: "导入", download: "下载", externalLink: "外部链接", delete: "删除",
+  reset: "恢复", copy: "复制", logs: "日志", more: "更多操作", chevronDown: "展开", sourceVideo: "源视频", processedVideo: "处理结果", diagnostic: "诊断",
+  display: "显示器", openFolder: "打开文件夹", workDirectory: "工作目录", saveOutput: "保存输出", upload: "上传", play: "播放", stop: "停止",
+  loading: "加载", clock: "时间", blurBackground: "模糊背景", crop: "裁切", contain: "完整留边", cpu: "CPU 编码", performance: "性能",
+  database: "缓存", cachedFile: "缓存文件",
+};
+
+export function isSemanticIconName(value: unknown): value is SemanticIconName {
+  return typeof value === "string" && (SEMANTIC_ICON_NAMES as readonly string[]).includes(value);
+}

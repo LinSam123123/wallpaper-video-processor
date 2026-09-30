@@ -1,0 +1,53 @@
+name: Bug report
+description: 报告可复现的错误或回归
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: 请先移除日志中的个人路径、视频名和其他隐私信息。
+  - type: input
+    id: version
+    attributes:
+      label: 版本
+      placeholder: 0.4.5
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Windows 与 GPU
+      placeholder: Windows 11 24H2, NVIDIA RTX 4060 8GB
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 请列出最小复现步骤和使用的非敏感设置。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 已脱敏日志
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 检查
+      options:
+        - label: 我没有附加私人视频、凭据或未脱敏的个人路径。
+          required: true

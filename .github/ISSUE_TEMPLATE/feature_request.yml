@@ -1,0 +1,23 @@
+name: Feature request
+description: 提议一个明确的产品改进
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 要解决的问题
+      description: 请描述工作流中的具体困难，而不只是模型或库名称。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议方案
+    validations:
+      required: true
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: 性能、兼容性与部署影响
+      description: 如涉及新模型，请注明显存、耗时、许可证、下载体积和可复现评测。

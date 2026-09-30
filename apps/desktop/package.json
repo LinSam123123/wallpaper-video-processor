@@ -1,0 +1,109 @@
+{
+  "name": "@wallpaper-video/desktop",
+  "version": "0.4.5",
+  "private": true,
+  "description": "Windows desktop interface for AI Video Wallpaper",
+  "type": "module",
+  "main": "./out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "preview": "electron-vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "bundle:cli": "esbuild ../cli/src/index.ts --bundle --platform=node --target=node22 --format=esm --outfile=build-resources/cli/index.js",
+    "package:win": "npm run build && npm run bundle:cli && electron-builder --win nsis"
+  },
+  "dependencies": {
+    "@fontsource/newsreader": "^5.2.10",
+    "@fontsource/noto-sans-sc": "^5.2.9",
+    "@fontsource/noto-serif-sc": "^5.2.9",
+    "@fontsource/source-sans-3": "^5.2.9",
+    "fontkit": "^2.0.4",
+    "jsonc-parser": "^3.3.1",
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "saxes": "^6.0.0",
+    "unzipper": "^0.12.5"
+  },
+  "devDependencies": {
+    "@electron-toolkit/utils": "^4.0.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/fontkit": "^2.0.9",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@types/unzipper": "^0.10.11",
+    "@vitejs/plugin-react": "^4.4.1",
+    "electron": "43.1.0",
+    "electron-builder": "^26.0.12",
+    "electron-vite": "^3.1.0",
+    "esbuild": "^0.25.5",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  },
+  "build": {
+    "appId": "com.aivideowallpaper.desktop",
+    "productName": "Wallpaper Video Processor",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "extraFiles": [
+      {
+        "from": "build-resources/wallpaper-video.cmd",
+        "to": "wallpaper-video.cmd"
+      },
+      {
+        "from": "build-resources/wallpaper-video.ps1",
+        "to": "wallpaper-video.ps1"
+      },
+      {
+        "from": "build-resources/wallpaper-video-launcher.mjs",
+        "to": "wallpaper-video-launcher.mjs"
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "build-resources/cli",
+        "to": "cli",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "resources",
+        "to": "resources",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "../../resources/dependencies.json",
+        "to": "resources/dependencies.json"
+      },
+      {
+        "from": "../../THIRD_PARTY_NOTICES.md",
+        "to": "THIRD_PARTY_NOTICES.md"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "artifactName": "AI-Video-Wallpaper-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  }
+}

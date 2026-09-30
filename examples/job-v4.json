@@ -1,0 +1,45 @@
+{
+  "version": 4,
+  "inputPath": "C:/Media/source.mp4",
+  "outputPath": "C:/Media/source.wallpaper.mp4",
+  "sourceRange": {
+    "startFrame": 0,
+    "endFrameExclusive": 240
+  },
+  "target": {
+    "width": 2560,
+    "height": 1600
+  },
+  "aspectMode": "cover",
+  "focus": {
+    "x": 0.5,
+    "y": 0.5
+  },
+  "loopMode": "pingpong",
+  "upscale": {
+    "backend": "realesrgan-ncnn-vulkan",
+    "model": "realesr-animevideov3",
+    "tile": 384,
+    "gpuId": "auto",
+    "aiScale": "auto",
+    "batchSize": 64
+  },
+  "sourceFps": "auto",
+  "interpolation": {
+    "mode": "rife",
+    "factor": 2,
+    "backend": "rife-ncnn-vulkan",
+    "model": "rife-v4.6",
+    "memoryMode": "auto",
+    "sceneCutMode": "hold"
+  },
+  "encoding": {
+    "codec": "h264",
+    "encoder": "libx264",
+    "profile": "high",
+    "crf": 17,
+    "preset": "slow",
+    "pixelFormat": "yuv420p",
+    "removeAudio": true
+  }
+}

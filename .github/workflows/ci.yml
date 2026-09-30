@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test
+        run: npm test
+
+      - name: Typecheck desktop
+        run: npm run typecheck --workspace @wallpaper-video/desktop
+
+      - name: Build
+        run: npm run build
+
+      - name: Bundle and validate Codex skill
+        run: npm run skill:prepare
+
+      - name: Verify generated bundle is committed
+        run: git diff --exit-code

@@ -1,0 +1,17 @@
+{
+  "width": 2560,
+  "height": 1600,
+  "sampleAspectRatio": "1:1",
+  "frameRate": 48,
+  "frameCount": 956,
+  "durationSeconds": 19.9166666667,
+  "codec": "h264",
+  "pixelFormat": "yuv420p",
+  "colorSpace": "bt709",
+  "colorPrimaries": "bt709",
+  "colorTransfer": "bt709",
+  "colorRange": "tv",
+  "audio": "none",
+  "durationToleranceSeconds": 0.05,
+  "frameRateTolerance": 0.001
+}
