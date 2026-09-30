@@ -16,8 +16,8 @@
     "test": "node --import ./test/register-typescript.mjs --test test/*.test.ts"
   },
   "devDependencies": {
-    "@types/node": "^24.0.0",
-    "typescript": "^5.8.0"
+    "@types/node": "^26.6.3",
+    "typescript": "^7.0.2"
   },
   "engines": {
     "node": ">=22.18"
