@@ -1,0 +1,24 @@
+{
+  "name": "wallpaper-video-processor",
+  "version": "0.4.5",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run build --workspace @wallpaper-video/core && npm run test --workspaces --if-present",
+    "dev": "npm run dev --workspace @wallpaper-video/desktop",
+    "cli": "npm run start --workspace @wallpaper-video/cli --",
+    "package:win": "npm run build && npm run package:win --workspace @wallpaper-video/desktop",
+    "skill:bundle": "esbuild ./apps/cli/src/index.ts --bundle --platform=node --target=node22 --format=esm --outfile=./skill/make-video-wallpaper/scripts/wallpaper-video-cli.mjs",
+    "skill:validate": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-skill.ps1",
+    "skill:prepare": "npm run skill:bundle && npm run skill:validate",
+    "skill:install": "npm run skill:prepare && powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-skill.ps1"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}

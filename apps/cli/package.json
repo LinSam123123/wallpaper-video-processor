@@ -1,0 +1,24 @@
+{
+  "name": "@wallpaper-video/cli",
+  "version": "0.4.5",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "wallpaper-video": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "test": "node --import ../../packages/core/test/register-typescript.mjs --test test/*.test.ts"
+  },
+  "dependencies": {
+    "@wallpaper-video/core": "file:../../packages/core"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}

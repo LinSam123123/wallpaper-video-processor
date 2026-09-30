@@ -1,0 +1,4 @@
+interface:
+  display_name: "Make Video Wallpaper"
+  short_description: "Loop, upscale, interpolate, and verify video wallpapers"
+  default_prompt: "Use $make-video-wallpaper to create and verify a smooth, upscaled looping video wallpaper."
